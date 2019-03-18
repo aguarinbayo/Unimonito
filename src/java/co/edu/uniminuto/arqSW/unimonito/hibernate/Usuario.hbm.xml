@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/03/2019 04:03:34 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="co.edu.uniminuto.arqSW.unimonito.hibernate.Usuario" table="Usuario" catalog="unimonito" optimistic-lock="version">
+        <id name="idUsuario" type="java.lang.Integer">
+            <column name="idUsuario" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="roles" class="co.edu.uniminuto.arqSW.unimonito.hibernate.Roles" fetch="select">
+            <column name="cod_Usuario" />
+        </many-to-one>
+        <property name="nombreUsuario" type="string">
+            <column name="nombreUsuario" length="45" />
+        </property>
+        <property name="cedulaUsuario" type="java.lang.Integer">
+            <column name="CedulaUsuario" />
+        </property>
+        <property name="correoUsuario" type="string">
+            <column name="correoUsuario" length="45" />
+        </property>
+        <property name="passUsuario" type="string">
+            <column name="passUsuario" length="45" />
+        </property>
+        <set name="boleterias" table="boleteria" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cod_Usuario" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSW.unimonito.hibernate.Boleteria" />
+        </set>
+        <set name="apuestas" table="Apuesta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cod_Usuario" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSW.unimonito.hibernate.Apuesta" />
+        </set>
+    </class>
+</hibernate-mapping>

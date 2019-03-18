@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/03/2019 04:03:34 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="co.edu.uniminuto.arqSW.unimonito.hibernate.Torneo" table="Torneo" catalog="unimonito" optimistic-lock="version">
+        <id name="idTorneo" type="java.lang.Integer">
+            <column name="idTorneo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="deporte" class="co.edu.uniminuto.arqSW.unimonito.hibernate.Deporte" fetch="select">
+            <column name="cod_Deporte" />
+        </many-to-one>
+        <property name="nombreTorneo" type="string">
+            <column name="nombreTorneo" length="45" />
+        </property>
+        <property name="fechaTorneoIn" type="date">
+            <column name="fechaTorneoIn" length="10" />
+        </property>
+        <property name="fechaTorneoOu" type="date">
+            <column name="fechaTorneoOu" length="10" />
+        </property>
+        <set name="equipos" table="Equipo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cod_Torneo" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSW.unimonito.hibernate.Equipo" />
+        </set>
+        <set name="catalogosForCodEquipo1" table="Catalogo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cod_Equipo1" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSW.unimonito.hibernate.Catalogo" />
+        </set>
+        <set name="catalogosForCodEquipo2" table="Catalogo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cod_Equipo2" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSW.unimonito.hibernate.Catalogo" />
+        </set>
+    </class>
+</hibernate-mapping>
