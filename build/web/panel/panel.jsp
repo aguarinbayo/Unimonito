@@ -5,10 +5,7 @@
 --%>
 
 <%
-
-    if(session.getAttribute("usr") == null){
-   response.sendRedirect("../login.html");
-}
+    if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == "")) {
 %>
 
 

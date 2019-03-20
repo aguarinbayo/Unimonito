@@ -5,7 +5,8 @@
 --%>
 
 <%
-if(session==null) session.invalidate();
+session.setAttribute("usr", null);
+session.invalidate();
 response.sendRedirect("../login.html");
 %>
 
