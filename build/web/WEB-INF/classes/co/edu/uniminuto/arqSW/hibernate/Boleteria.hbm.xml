@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20/03/2019 11:53:13 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="co.edu.uniminuto.arqSW.hibernate.Boleteria" table="boleteria" catalog="unimonito" optimistic-lock="version">
+        <id name="idboleteria" type="java.lang.Integer">
+            <column name="idboleteria" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="catalogo" class="co.edu.uniminuto.arqSW.hibernate.Catalogo" fetch="select">
+            <column name="cod_catalogo" />
+        </many-to-one>
+        <many-to-one name="usuario" class="co.edu.uniminuto.arqSW.hibernate.Usuario" fetch="select">
+            <column name="cod_Usuario" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
