@@ -78,7 +78,7 @@ public class DAO {
          try {
             Transaction tx = session.beginTransaction();
             Query q = session.createQuery("from Usuario WHERE correoUsuario= :correo AND passUsuario=:pass");
-             q.setParameter("correo", correo);
+            q.setParameter("correo", correo);
              q.setParameter("pass", pass);
             Usuarios = (List<Usuario>) q.list();
         } catch (Exception e) {

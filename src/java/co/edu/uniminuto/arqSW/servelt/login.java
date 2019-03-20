@@ -6,13 +6,16 @@
 package co.edu.uniminuto.arqSW.servelt;
 
 import co.edu.uniminuto.arqSW.DAO.DAO;
+import co.edu.uniminuto.arqSW.hibernate.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,11 +40,16 @@ public class login extends HttpServlet {
         
         DAO consulta = new DAO();
         
-        consulta.getlogin(nombre,pass);
+        List<Usuario> respuesta= consulta.getlogin(nombre,pass);
+        
+        
         
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           response.sendRedirect("/panel/panel.jsp" );
+           HttpSession session = request.getSession();
+           session.setAttribute("usr", respuesta.get(0));
+            
+       response.sendRedirect("./panel/panel.jsp" );
         }
     }
 

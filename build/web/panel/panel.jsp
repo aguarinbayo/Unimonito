@@ -4,6 +4,14 @@
     Author     : clarylinux
 --%>
 
+<%
+
+    if(session.getAttribute("usr") == null){
+   response.sendRedirect("../login.html");
+}
+%>
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +20,17 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+  <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="cerrar.jsp"><span class="glyphicon glyphicon-log-in"></span> cerrar sesion</a></li>
+    </ul>
+  </div>
+</nav>
+        <p>Id Usuario: <strong>${usr.idUsuario}</strong></p>
     </body>
 </html>
