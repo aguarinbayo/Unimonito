@@ -1,31 +1,14 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Onescreen/Documents/unimonito/Unimonito/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/Onescreen/Documents/unimonito/Unimonito/src/java/co/edu/uniminuto/arqSw/servelt/actualizarTorneo.java</file>
             <file>file:/C:/Users/Onescreen/Documents/unimonito/Unimonito/web/panel/panel.jsp</file>
-            <file>file:/C:/Users/Onescreen/Documents/unimonito/Unimonito/web/panel/cerrar.jsp</file>
+            <file>file:/C:/Users/Onescreen/Documents/unimonito/Unimonito/src/java/co/edu/uniminuto/arqSw/servelt/actTorneo.java</file>
+            <file>file:/C:/Users/Onescreen/Documents/unimonito/Unimonito/src/java/co/edu/uniminuto/arqSw/DAO/DAO.java</file>
+            <file>file:/C:/Users/Onescreen/Documents/unimonito/Unimonito/src/java/co/edu/uniminuto/arqSw/servelt/CrearTorneo.java</file>
+            <file>file:/C:/Users/Onescreen/Documents/unimonito/Unimonito/src/java/co/edu/uniminuto/arqSw/hibernate/Torneo.java</file>
         </group>
     </open-files>
 </project-private>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/clarylinux/NetBeansProjects/unimonito/src/java/co/edu/uniminuto/hibernate/HibernateUtil.java</file>
-            <file>file:/home/clarylinux/NetBeansProjects/unimonito/web/index.html</file>
-            <file>file:/home/clarylinux/NetBeansProjects/unimonito/src/java/co/edu/uniminuto/hibernate/Apuesta.hbm.xml</file>
-            <file>file:/home/clarylinux/NetBeansProjects/unimonito/src/java/co/edu/uniminuto/hibernate/Catalogo.hbm.xml</file>
-            <file>file:/home/clarylinux/NetBeansProjects/unimonito/src/java/co/edu/uniminuto/hibernate/Apuesta.java</file>
-            <file>file:/home/clarylinux/NetBeansProjects/unimonito/src/java/co/edu/uniminuto/hibernate/Boleteria.hbm.xml</file>
-            <file>file:/home/clarylinux/NetBeansProjects/unimonito/src/java/co/edu/uniminuto/hibernate/Boleteria.java</file>
-            <file>file:/home/clarylinux/NetBeansProjects/unimonito/src/java/hibernate.cfg.xml</file>
-            <file>file:/home/clarylinux/NetBeansProjects/unimonito/src/java/hibernate.reveng.xml</file>
-        </group>
-    </open-files>
-</project-private>
->>>>>>> master

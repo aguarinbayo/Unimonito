@@ -55,7 +55,7 @@ public class registrar extends HttpServlet {
            // out.println(""++"");
             
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
                //if(consulta.getExisteUsuario(correo).get(0).getCorreoUsuario().isEmpty()){
                  /*  
 =======
@@ -110,16 +110,12 @@ public class registrar extends HttpServlet {
                    consulta.setUsuario(nombre,aux,correo,pass);
                    response.sendRedirect("login.html" );
              //  }        
-=======
-                   
                }else{
                int aux=Integer.parseInt(cedula);
                    consulta.setUsuario(nombre,aux,correo,pass);
                    response.sendRedirect("pagina_a_redireccionar.jsp" );
                }          
->>>>>>> master
-            
-            
+
             out.println("</body>");
             out.println("</html>");
         }

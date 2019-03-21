@@ -21,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Onescreen
  */
-@WebServlet(name = "actualizarDeporte", urlPatterns = {"/actualizarDeporte"})
-public class actualizarDeporte extends HttpServlet {
+@WebServlet(name = "crearDeporte", urlPatterns = {"/crearDeporte"})
+public class CrearDeporte extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,13 +37,12 @@ public class actualizarDeporte extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-                    String dato=request.getParameter("dato");
+                  
         /*String tipo=request.getParameter("tipo");*/
-        int aux = (Integer.parseInt(dato));
+       
     
           DAO consulta = new DAO();
-            List<Deporte> deporte = new java.util.ArrayList<>();
-            Deporte deportes=consulta.getDeporte(aux);
+      
            /* deporte=(List<Deporte>) consulta.getDeporte(aux);
             /* TODO output your page here. You may use following sample code. */
            
@@ -70,11 +69,11 @@ public class actualizarDeporte extends HttpServlet {
 "  </div>\n" +
 "</nav>\n" +
 "      <div class=\"container\">\n" +
-"                   <form action=\"acualizarDeportes\" method=\"post\">\n" +
+"                   <form action=\"CrearDeport\" method=\"post\">\n" +
 "          <div class=\"form-group\">\n" +
-"          <input type=\"hidden\" class=\"form-control\" id=\"Nombre\" name=\"id\" value=\""+aux+"\">\n" +
+"          <input type=\"hidden\" class=\"form-control\" id=\"Nombre\" name=\"id\" paceholder=\"Nombre del deporte\">\n" +
 "            <label for=\"Nombre\">Nombre Del Deporte</label>\n" +
-"            <input type=\"text\" class=\"form-control\" id=\"Nombre\" name=\"nombre\" value=\""+deportes.getNombreDeporte()+"\">\n" +
+"            <input type=\"text\" class=\"form-control\" id=\"Nombre\" name=\"nombre\" paceholder=\"Nombre del deporte\">\n" +
 "\n" +
 "          </div>\n" +
 "          <button type=\"submit\" class=\"btn btn-primary\">Submit</button>\n" +

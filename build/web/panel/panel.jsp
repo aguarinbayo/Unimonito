@@ -28,7 +28,7 @@
         <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Unimonito</a>
+      <a class="navbar-brand" href="http://localhost:8084/unimonito/panel/panel.jsp">Unimonito</a>
     </div>
   <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="glyphicon glyphicon-user"></span>${usr.nombreUsuario}</a></li>
@@ -46,7 +46,7 @@
            <div class="panel-body">
                <ul>
                    <li><a href="../deporte">Consultar Deportes</a></li>
-                   <li><a href="">Ingresar Deporte</a></li>
+                   <li><a href="../crearDeporte">Ingresar Deporte</a></li>
                </ul>
            </div>
                    </div>
@@ -54,10 +54,13 @@
                <div class="col-md-4">
             <a href="deporte.jsp">  <div class="panel panel-default">
            <div class="panel-heading">
-             <h3 class="panel-title">Título del panel con estilo h3</h3>
+             <h3 class="panel-title">Torneo</h3>
            </div>
            <div class="panel-body">
-             Contenido del panel
+                   <ul>
+                   <li><a href="../torneo">Consultar Torneo</a></li>
+                   <li><a href="../crearTorneo">Ingresar Torneo</a></li>
+               </ul>
            </div>
                    </div> </a>
                </div>

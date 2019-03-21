@@ -41,10 +41,22 @@
           <div class="form-group">
             <label for="Nombre">Nombre Del Deporte</label>
             <input type="text" class="form-control" id="Nombre" name="correo" placeholder="nombre completo">
-
           </div>
+          <div class="form-group">
+            <label for="date">Fecha de Inicio</label>
+            <input type="date" class="form-control" id="date" name="date">
+          </div>
+          <div class="form-group">
+            <label for="date2">Fecha de cierre</label>
+            <input type="date" class="form-control" id="date2" name="date2">
+          </div>
+          <div class="form-group">
+              <select>
+                  <option value=""></option>
+              </select>
+          </div>             
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       
     </body>
-</html
+</html>

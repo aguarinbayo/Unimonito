@@ -7,6 +7,7 @@ package co.edu.uniminuto.arqSW.servelt;
 
 import co.edu.uniminuto.arqSW.DAO.DAO;
 import co.edu.uniminuto.arqSW.hibernate.Deporte;
+import co.edu.uniminuto.arqSW.hibernate.Torneo;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Array;
@@ -21,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Onescreen
  */
-@WebServlet(name = "actualizarDeporte", urlPatterns = {"/actualizarDeporte"})
-public class actualizarDeporte extends HttpServlet {
+@WebServlet(name = "actualizarTorneo", urlPatterns = {"/actualizarTorneo"})
+public class actualizarTorneo extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,8 +43,9 @@ public class actualizarDeporte extends HttpServlet {
         int aux = (Integer.parseInt(dato));
     
           DAO consulta = new DAO();
-            List<Deporte> deporte = new java.util.ArrayList<>();
-            Deporte deportes=consulta.getDeporte(aux);
+            List<Deporte> depor = new java.util.ArrayList<>();
+            Torneo torneos=consulta.getTorneo(aux);
+            depor= consulta.getDeporte();
            /* deporte=(List<Deporte>) consulta.getDeporte(aux);
             /* TODO output your page here. You may use following sample code. */
            
@@ -62,25 +64,42 @@ public class actualizarDeporte extends HttpServlet {
 "        <nav class=\"navbar navbar-default\">\n" +
 "  <div class=\"container-fluid\">\n" +
 "    <div class=\"navbar-header\">\n" +
-"      <a class=\"navbar-brand\" href=\"http://localhost:8084/unimonito/panel/panel.jsp\">Unimonito</a>\n" +
+"      <a class=\"navbar-brand\" href=\"#\">Unimonito</a>\n" +
 "    </div>\n" +
 "  <ul class=\"nav navbar-nav navbar-right\">\n" +
-"      <li><a href=\"http://localhost:8084/unimonito/panel/cerrar.jsp\"><span class=\"glyphicon glyphicon-log-in\"></span> cerrar sesion</a></li>\n" +
+
+"      <li><a href=\"cerrar.jsp\"><span class=\"glyphicon glyphicon-log-in\"></span> cerrar sesion</a></li>\n" +
 "    </ul>\n" +
 "  </div>\n" +
 "</nav>\n" +
 "      <div class=\"container\">\n" +
-"                   <form action=\"acualizarDeportes\" method=\"post\">\n" +
+"                   <form action=\"actTorneo\" method=\"post\">\n" +
 "          <div class=\"form-group\">\n" +
-"          <input type=\"hidden\" class=\"form-control\" id=\"Nombre\" name=\"id\" value=\""+aux+"\">\n" +
+"            <input type=\"hidden\" class=\"form-control\" id=\"h\" name=\"id\" value=\""+torneos.getIdTorneo()+"\">\n" +
 "            <label for=\"Nombre\">Nombre Del Deporte</label>\n" +
-"            <input type=\"text\" class=\"form-control\" id=\"Nombre\" name=\"nombre\" value=\""+deportes.getNombreDeporte()+"\">\n" +
-"\n" +
+"            <input type=\"text\" class=\"form-control\" id=\"Nombre\" name=\"nombre\" value=\""+torneos.getNombreTorneo()+"\">\n" +
 "          </div>\n" +
-"          <button type=\"submit\" class=\"btn btn-primary\">Submit</button>\n" +
-"        </form>\n" +
-"      \n" +
-"    </body>\n" +
+"          <div class=\"form-group\">\n" +
+"            <label for=\"date\">Fecha de Inicio</label>\n" +
+"            <input type=\"date\" class=\"form-control\" id=\"date\" name=\"date\" value=\""+torneos.getFechaTorneoIn()+"\">\n" +
+"          </div>\n" +
+"          <div class=\"form-group\">\n" +
+"            <label for=\"date2\">Fecha de cierre</label>\n" +
+"            <input type=\"date\" class=\"form-control\" id=\"date2\" name=\"date2\" value=\""+torneos.getFechaTorneoOu()+"\">\n" +
+"          </div>\n" +
+"          <div class=\"form-group\">\n" +
+"                <label for=\"select\">Deporte</label>\n" +
+"              <select name=\"select\">\n" );
+           for(Deporte p:depor){
+                     out.println("<option value=\""+p.getIdDeporte()+"\">"+p.getNombreDeporte()+"</option>\n");
+            }
+            
+            out.println("    </body>\n" +
+                    "  </select>\n" +
+                    "          </div>             \n" +
+                    "          <button type=\"submit\" class=\"btn btn-primary\">Submit</button>\n" +
+                    "        </form>\n" +
+                    "      \n" +
 "</html>");
         }
     }

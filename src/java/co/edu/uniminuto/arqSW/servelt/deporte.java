@@ -65,7 +65,7 @@ public class deporte extends HttpServlet {
 "        <nav class=\"navbar navbar-default\">\n" +
 "  <div class=\"container-fluid\">\n" +
 "    <div class=\"navbar-header\">\n" +
-"      <a class=\"navbar-brand\" href=\"#\">Unimonito</a>\n" +
+"      <a class=\"navbar-brand\" href=\"http://localhost:8084/unimonito/panel/panel.jsp\">Unimonito</a>\n" +
 "    </div>\n" +
 "  <ul class=\"nav navbar-nav navbar-right\">\n" +
         "      <li><a href=\"http://localhost:8084/unimonito/panel/cerrar.jsp\"><span class=\"glyphicon glyphicon-log-in\"></span> cerrar sesion</a></li>\n" +
@@ -87,14 +87,14 @@ public class deporte extends HttpServlet {
                     p.getIdDeporte()
                     +"</td><td>\n"+
                     p.getNombreDeporte()+
-                    "</td><td><a href=\"http://localhost:8084/unimonito/eliminar?dato="+p.getIdDeporte()+"&tipo=Deporte \">Eliminar</a>\n"+
+                    "</td><td>\n"+
                     "</td><td><a href=\"http://localhost:8084/unimonito/actualizarDeporte"
                             + ""
                             + "?dato="+p.getIdDeporte()+"&tipo=Deporte \">Actualizar</a></td></tr>");
             }
         }
     }
-
+//<a href=\"http://localhost:8084/unimonito/eliminar?dato="+p.getIdDeporte()+"&tipo=Deporte \">Eliminar</a>
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
