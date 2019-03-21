@@ -8,12 +8,18 @@ package co.edu.uniminuto.arqSW.DAO;
 import co.edu.uniminuto.arqSW.hibernate.Deporte;
 import co.edu.uniminuto.arqSW.hibernate.NewHibernateUtil;
 import co.edu.uniminuto.arqSW.hibernate.Roles;
+<<<<<<< HEAD
 import co.edu.uniminuto.arqSW.hibernate.Torneo;
 import co.edu.uniminuto.arqSW.hibernate.Usuario;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+=======
+import co.edu.uniminuto.arqSW.hibernate.Usuario;
+import java.util.ArrayList;
+import java.util.List;
+>>>>>>> master
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -76,6 +82,7 @@ public class DAO {
          
         }
         
+<<<<<<< HEAD
           public List<Usuario> getlogin(String correo,String pass){
              List<Usuario> Usuarios= new ArrayList<Usuario>();
          try {
@@ -91,6 +98,8 @@ public class DAO {
                   
         }
         
+=======
+>>>>>>> master
         
         public void setUsuario(String Nombre,int Cedula,String Correo,String pass){
             
@@ -109,6 +118,7 @@ public class DAO {
             session.close();     
         
     }
+<<<<<<< HEAD
     /*public void setEliminar(int dato,String tipo){
 session.beginTransaction();
 Query q = session.createQuery("delete from Deporte where idDeporte = :dato");
@@ -162,4 +172,6 @@ q.executeUpdate();
      session.close();*/
      return aux;
 }
+=======
+>>>>>>> master
 }

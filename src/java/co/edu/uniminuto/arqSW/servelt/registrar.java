@@ -55,8 +55,13 @@ public class registrar extends HttpServlet {
            // out.println(""++"");
             
 
+<<<<<<< HEAD
                //if(consulta.getExisteUsuario(correo).get(0).getCorreoUsuario().isEmpty()){
                  /*  
+=======
+               if(consulta.getExisteUsuario(correo).isEmpty()){
+                   
+>>>>>>> master
                    out.println("<html>\n" +
                            "    <head>\n" +
                            "        <title>TODO supply a title</title>\n" +
@@ -98,12 +103,21 @@ public class registrar extends HttpServlet {
                                    "    </body>\n" +
                                    "</html>\n" +
                                    "");
+<<<<<<< HEAD
                    */
               // }else{
                int aux=Integer.parseInt(cedula);
                    consulta.setUsuario(nombre,aux,correo,pass);
                    response.sendRedirect("login.html" );
              //  }        
+=======
+                   
+               }else{
+               int aux=Integer.parseInt(cedula);
+                   consulta.setUsuario(nombre,aux,correo,pass);
+                   response.sendRedirect("pagina_a_redireccionar.jsp" );
+               }          
+>>>>>>> master
             
             
             out.println("</body>");
