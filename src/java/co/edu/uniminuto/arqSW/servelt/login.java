@@ -42,14 +42,20 @@ public class login extends HttpServlet {
         
         List<Usuario> respuesta= consulta.getlogin(nombre,pass);
         
-        
-        
+  
+
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           HttpSession session = request.getSession();
-           session.setAttribute("usr", respuesta.get(0));
-            
-       response.sendRedirect("./panel/panel.jsp" );
+         
+            if(respuesta.size()==0){
+             response.sendRedirect("login.html" );
+            }else{
+                            
+                HttpSession session = request.getSession();
+                session.setAttribute("usr", respuesta.get(0));
+                response.sendRedirect("./panel/panel.jsp" );
+            }
+
         }
     }
 
