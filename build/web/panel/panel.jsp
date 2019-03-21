@@ -71,8 +71,4 @@
            </div>
                    </div> </a>
                </div>               
-           </div> 
-     </div> 
- 
-    </body>
 </html>

@@ -7,25 +7,22 @@ package co.edu.uniminuto.arqSW.servelt;
 
 import co.edu.uniminuto.arqSW.DAO.DAO;
 import co.edu.uniminuto.arqSW.hibernate.Deporte;
-import co.edu.uniminuto.arqSW.hibernate.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.sql.Array;
 import java.util.List;
-import static javassist.CtMethod.ConstParameter.string;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Onescreen
  */
-@WebServlet(name = "deporte", urlPatterns = {"/deporte"})
-public class deporte extends HttpServlet {
+@WebServlet(name = "actualizarDeporte", urlPatterns = {"/actualizarDeporte"})
+public class actualizarDeporte extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,20 +37,20 @@ public class deporte extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            DAO consulta = new DAO();
-            List<Deporte> deporte = new ArrayList<>();
-            deporte=consulta.getDeporte();
-            HttpSession session = request.getSession();
-           if(session.getAttribute("usr")==null){
-           response.sendRedirect("http://localhost:8084/unimonito/login.html");
-           }
-            
-
+                    String dato=request.getParameter("dato");
+        /*String tipo=request.getParameter("tipo");*/
+        int aux = (Integer.parseInt(dato));
+    
+          DAO consulta = new DAO();
+            List<Deporte> deporte = new java.util.ArrayList<>();
+            Deporte deportes=consulta.getDeporte(aux);
+           /* deporte=(List<Deporte>) consulta.getDeporte(aux);
+            /* TODO output your page here. You may use following sample code. */
+           
             out.println("<!DOCTYPE html>\n" +
 "<html>\n" +
 "    <head>\n" +
-"        <title>PANEL</title>\n" +
+"        <title>actaulizar</title>\n" +
 "        <meta charset=\"UTF-8\">\n" +
 "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
 "      <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css\">\n" +
@@ -61,37 +58,30 @@ public class deporte extends HttpServlet {
 "        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
 "        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js\"></script>\n" +
 "    </head>\n" +
-"    \n" +
+"    <body>\n" +
 "        <nav class=\"navbar navbar-default\">\n" +
 "  <div class=\"container-fluid\">\n" +
 "    <div class=\"navbar-header\">\n" +
 "      <a class=\"navbar-brand\" href=\"#\">Unimonito</a>\n" +
 "    </div>\n" +
 "  <ul class=\"nav navbar-nav navbar-right\">\n" +
-        "      <li><a href=\"http://localhost:8084/unimonito/panel/cerrar.jsp\"><span class=\"glyphicon glyphicon-log-in\"></span> cerrar sesion</a></li>\n" +
+"      <li><a href=\"http://localhost:8084/unimonito/panel/cerrar.jsp\"><span class=\"glyphicon glyphicon-log-in\"></span> cerrar sesion</a></li>\n" +
 "    </ul>\n" +
 "  </div>\n" +
 "</nav>\n" +
-"      \n" +
 "      <div class=\"container\">\n" +
-"          <div class=\"row\">\n" +
-"              <table>\n" +
-"                  <tr>\n" +
-"                      <td>ID</td>\n" +
-"                      <td>Nombre Deporte</td>\n" +
-"                      <td></td>\n" +
-"                      <td></td>\n" +
-"                  </tr>");
-            for(Deporte p:deporte){
-            out.println("<tr><td>\n"+
-                    p.getIdDeporte()
-                    +"</td><td>\n"+
-                    p.getNombreDeporte()+
-                    "</td><td><a href=\"http://localhost:8084/unimonito/eliminar?dato="+p.getIdDeporte()+"&tipo=Deporte \">Eliminar</a>\n"+
-                    "</td><td><a href=\"http://localhost:8084/unimonito/actualizarDeporte"
-                            + ""
-                            + "?dato="+p.getIdDeporte()+"&tipo=Deporte \">Actualizar</a></td></tr>");
-            }
+"                   <form action=\"acualizarDeportes\" method=\"post\">\n" +
+"          <div class=\"form-group\">\n" +
+"          <input type=\"hidden\" class=\"form-control\" id=\"Nombre\" name=\"id\" value=\""+aux+"\">\n" +
+"            <label for=\"Nombre\">Nombre Del Deporte</label>\n" +
+"            <input type=\"text\" class=\"form-control\" id=\"Nombre\" name=\"nombre\" value=\""+deportes.getNombreDeporte()+"\">\n" +
+"\n" +
+"          </div>\n" +
+"          <button type=\"submit\" class=\"btn btn-primary\">Submit</button>\n" +
+"        </form>\n" +
+"      \n" +
+"    </body>\n" +
+"</html>");
         }
     }
 
