@@ -7,6 +7,7 @@ package co.edu.uniminuto.arqSW.servelt;
 
 import co.edu.uniminuto.arqSW.DAO.DAO;
 import co.edu.uniminuto.arqSW.hibernate.Deporte;
+import co.edu.uniminuto.arqSW.hibernate.Equipo;
 import co.edu.uniminuto.arqSW.hibernate.Torneo;
 import co.edu.uniminuto.arqSW.hibernate.Usuario;
 import java.io.IOException;
@@ -25,8 +26,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Onescreen
  */
-@WebServlet(name = "torneo", urlPatterns = {"/torneo"})
-public class torneo extends HttpServlet {
+@WebServlet(name = "equipo", urlPatterns = {"/equipo"})
+public class equipo extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +44,10 @@ public class torneo extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             
             DAO consulta = new DAO();
-            List<Torneo> torneo = new ArrayList<>();
+            List<Equipo> equipo = new ArrayList<>();
+            equipo=consulta.getEquipo();
             Deporte depor;
-            torneo=consulta.getTorn();
-            
+            Torneo torneo;
             HttpSession session = request.getSession();
            if(session.getAttribute("usr")==null){
            response.sendRedirect("http://localhost:8084/unimonito/login.html");
@@ -81,31 +82,32 @@ public class torneo extends HttpServlet {
 "              <table>\n" +
 "                  <tr>\n" +
 "                      <td>ID</td>\n" +
-"                      <td>Nombre Deporte</td>\n" +
-"                      <td>Fecha Inicio</td>\n" +
-"                      <td>Fecha Cierre</td>\n" +
-"                      <td>Torneo</td>\n" +                    
+"                      <td>Nombre Equipo</td>\n" +
+"                      <td>Torneo</td>\n" +
+"                      <td></td>\n" +
+"                      <td></td>\n" + 
+"                        <td></td>\n" + 
 "                    <td></td>\n" +
 "                  </tr>");
-            for(Torneo p:torneo){
-                    
-                    depor= p.getDeporte();
+            for(Equipo p:equipo){
                
+                    torneo= p.getTorneo();
+                 
                 
             out.println("<tr><td>\n"+
-                    p.getIdTorneo()
+                    p.getIdEquipo()
                     +"</td><td>\n"+
-                    p.getNombreTorneo()+
+                    p.getNombreEquipo()+
                     "</td><td>\n"+
-                     p.getFechaTorneoIn()+       
+                     torneo.getNombreTorneo()+     
                     "</td><td>\n"+
-                    p.getFechaTorneoOu()+
+                    
                     "</td><td>\n"+
-                   depor.getNombreDeporte()+
+                   // depor.getNombreDeporte()+
                     "</td><td>\n"+
-                    "</td><td><a href=\"http://localhost:8084/unimonito/actualizarTorneo"
+                    "</td><td><a href=\"http://localhost:8084/unimonito/actualizarEquipo"
                             + ""
-                            + "?dato="+p.getIdTorneo()+"&tipo=Torneo \">Actualizar</a></td></tr>");
+                            + "?dato="+p.getIdEquipo()+"&tipo=Equipo \">Actualizar</a></td></tr>");
             }
         }
     }

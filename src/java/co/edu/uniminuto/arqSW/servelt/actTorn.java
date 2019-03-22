@@ -24,8 +24,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Onescreen
  */
-@WebServlet(name = "actTorneo", urlPatterns = {"/actTorneo"})
-public class actTorneo extends HttpServlet {
+@WebServlet(name = "actTorn", urlPatterns = {"/actTorn"})
+public class actTorn extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,13 +40,13 @@ public class actTorneo extends HttpServlet {
             throws ServletException, IOException, ParseException {
          DAO consulta = new DAO();
         response.setContentType("text/html;charset=UTF-8");
-        String dato=request.getParameter("id");
+        //String dato=request.getParameter("id");
         String nombre=request.getParameter("nombre");
         String date=request.getParameter("date");
         String date2=request.getParameter("date2");
         String deport=request.getParameter("select");
         int axu2= (Integer.parseInt(deport));
-        int aux = (Integer.parseInt(dato));
+      //  int aux = (Integer.parseInt(dato));
          Date dateA=DAO.ParseFecha(date);
          Date dateB=DAO.ParseFecha(date2);
          response.setContentType("text/html;charset=UTF-8");
@@ -58,7 +58,7 @@ public class actTorneo extends HttpServlet {
            if(session.getAttribute("usr")==null){
            response.sendRedirect("http://localhost:8084/unimonito/login.html");
            }
-           out.println(consulta.setActualizarTorneo(aux,nombre,dateA,dateB,axu2));
+           out.println(consulta.setCrearTorneo(nombre,dateA,dateB,axu2));
            response.sendRedirect("http://localhost:8084/unimonito/torneo");
        
         

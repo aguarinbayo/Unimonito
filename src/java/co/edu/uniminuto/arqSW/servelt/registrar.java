@@ -55,13 +55,12 @@ public class registrar extends HttpServlet {
            // out.println(""++"");
             
 
-//<<<<<<< HEAD
-               //if(consulta.getExisteUsuario(correo).get(0).getCorreoUsuario().isEmpty()){
-                 /*  
-=======
+
+               if(consulta.getExisteUsuario(correo).get(0).getCorreoUsuario().isEmpty()){
+
                if(consulta.getExisteUsuario(correo).isEmpty()){
                    
->>>>>>> master
+
                    out.println("<html>\n" +
                            "    <head>\n" +
                            "        <title>TODO supply a title</title>\n" +
@@ -103,8 +102,7 @@ public class registrar extends HttpServlet {
                                    "    </body>\n" +
                                    "</html>\n" +
                                    "");
-<<<<<<< HEAD
-                   */
+
               // }else{
                int aux=Integer.parseInt(cedula);
                    consulta.setUsuario(nombre,aux,correo,pass);
@@ -120,7 +118,7 @@ public class registrar extends HttpServlet {
             out.println("</html>");
         }
     }
-
+}
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

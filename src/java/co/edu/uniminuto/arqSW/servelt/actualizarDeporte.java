@@ -43,7 +43,7 @@ public class actualizarDeporte extends HttpServlet {
     
           DAO consulta = new DAO();
             List<Deporte> deporte = new java.util.ArrayList<>();
-            Deporte deportes=consulta.getDeporte(aux);
+            Deporte deportes=consulta.getDeportes(aux);
            /* deporte=(List<Deporte>) consulta.getDeporte(aux);
             /* TODO output your page here. You may use following sample code. */
            

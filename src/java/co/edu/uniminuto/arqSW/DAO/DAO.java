@@ -6,6 +6,7 @@
 package co.edu.uniminuto.arqSW.DAO;
 
 import co.edu.uniminuto.arqSW.hibernate.Deporte;
+import co.edu.uniminuto.arqSW.hibernate.Equipo;
 import co.edu.uniminuto.arqSW.hibernate.NewHibernateUtil;
 import co.edu.uniminuto.arqSW.hibernate.Roles;
 import co.edu.uniminuto.arqSW.hibernate.Torneo;
@@ -52,7 +53,7 @@ public class DAO {
         }
         return misDeportes;
     }
-        public List<Torneo> getTorneo() {
+        public List<Torneo> getTorn() {
         List<Torneo> misTorneo = new ArrayList<Torneo>();
         try {
             Transaction tx = session.beginTransaction();
@@ -63,6 +64,19 @@ public class DAO {
         }
         return misTorneo;
     }
+                public List<Equipo> getEquipo() {
+        List<Equipo> misEquipo = new ArrayList<Equipo>();
+        try {
+            Transaction tx = session.beginTransaction();
+            Query q = session.createQuery("from Equipo");
+            misEquipo = (List<Equipo>) q.list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return misEquipo;
+    }
+                
+                
     public List<Usuario> getUsuario(){
         List<Usuario> Usuarios= new ArrayList<Usuario>();
          try {
@@ -147,33 +161,43 @@ public class DAO {
 }
     public Date setActualizarTorneo(int dato, String nombre, Date date,Date date2,int cod) {
     String Nombre=nombre;
-     /*Deporte deporte=(Deporte) session.load(Deporte.class, cod);
+     Deporte deporte=(Deporte) session.load(Deporte.class, cod);
      Torneo aux=new Torneo();
      aux.setIdTorneo(dato);
      aux.setNombreTorneo(Nombre);
      aux.setFechaTorneoIn(date);
      aux.setFechaTorneoOu(date2);
      aux.setDeporte(deporte);
-    /* session.clear();
+     session.clear();
      session.beginTransaction();
      session.update(aux); 
      session.getTransaction().commit();
-     session.close();*/
+     session.close();
     
     return date;
 }
+    public Date setCrearTorneo(String nombre, Date date,Date date2,int cod) {
+    String Nombre=nombre;
+     Deporte deporte=(Deporte) session.load(Deporte.class, cod);
+     Torneo aux=new Torneo();
+     aux.setIdTorneo(null);
+     aux.setNombreTorneo(Nombre);
+     aux.setFechaTorneoIn(date);
+     aux.setFechaTorneoOu(date2);
+     aux.setDeporte(deporte);
+     session.clear();
+     session.beginTransaction();
+     session.save(aux); 
+     session.getTransaction().commit();
+     session.close();
     
-     public static Date ParseFecha(String fecha)
+    return date;
+}    
+     public static Date ParseFecha(String fecha) throws ParseException
     {
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        Date fechaDate = null;
-        try {
-            fechaDate = formato.parse(fecha);
-        } 
-        catch (ParseException ex) 
-        {
-            System.out.println(ex);
-        }
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+       Date fechaDate = format.parse(fecha);
+       
         return fechaDate;
     }
      
@@ -192,18 +216,22 @@ public class DAO {
         return null;
     }
     
-    public Deporte getDeporte(int dato){
+    public Deporte getDeportes(int dato){
     
         Deporte deporte=(Deporte)session.get(Deporte.class,dato);
         return deporte;
     }
     
-       public Torneo getTorneo(int dato){
+       public Torneo getTorneos(int dato){
     
         Torneo torneo=(Torneo)session.get(Torneo.class,dato);
         return torneo;
     }
+       public Equipo getEquipos(int dato){
     
+        Equipo equipo=(Equipo)session.get(Equipo.class,dato);
+        return equipo;
+    }
     public Deporte setEliminar(int dato) {
      Deporte deporte=(Deporte)session.get(Deporte.class,dato);
      Integer aux1=deporte.getIdDeporte();

@@ -52,26 +52,41 @@
                    </div>
                </div>
                <div class="col-md-4">
-            <a href="deporte.jsp">  <div class="panel panel-default">
+          <div class="panel panel-default">
            <div class="panel-heading">
              <h3 class="panel-title">Torneo</h3>
            </div>
            <div class="panel-body">
                    <ul>
                    <li><a href="../torneo">Consultar Torneo</a></li>
-                   <li><a href="../crearTorneo">Ingresar Torneo</a></li>
+                   <li><a href="../CrearTorneo">Ingresar Torneo</a></li>
                </ul>
-           </div>
-                   </div> </a>
-               </div>
+                </div>
+                   </div>
+               </div> 
                <div class="col-md-4">
-            <a href="deporte.jsp">  <div class="panel panel-default">
+              <div class="panel panel-default">
            <div class="panel-heading">
-             <h3 class="panel-title">Título del panel con estilo h3</h3>
+             <h3 class="panel-title">Equipo</h3>
            </div>
            <div class="panel-body">
-             Contenido del panel
+                  <ul>
+                   <li><a href="../equipo">Consultar Torneo</a></li>
+                   <li><a href="../CrearTorneo">Ingresar Torneo</a></li>
+               </ul>
            </div>
-                   </div> </a>
-               </div>               
-</html>
+                   </div>              </div> 
+               
+                         <div class="col-md-4">
+              <div class="panel panel-default">
+           <div class="panel-heading">
+             <h3 class="panel-title">Jugador</h3>
+           </div>
+           <div class="panel-body">
+                  <ul>
+                   <li><a href="../torneo">Consultar Jugador</a></li>
+                   <li><a href="../CrearTorneo">Ingresar Jugador</a></li>
+               </ul>
+           </div>
+                   </div>              </div>      
+          

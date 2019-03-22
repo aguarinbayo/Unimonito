@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniminuto.arqSw.servelt;
+package co.edu.uniminuto.arqSW.servelt;
 
 import co.edu.uniminuto.arqSW.DAO.DAO;
 import co.edu.uniminuto.arqSW.hibernate.Deporte;
@@ -40,11 +40,11 @@ public class CrearTorneo extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
                     String dato=request.getParameter("dato");
         /*String tipo=request.getParameter("tipo");*/
-        int aux = (Integer.parseInt(dato));
+        //int aux = (Integer.parseInt(dato));
     
           DAO consulta = new DAO();
             List<Deporte> depor = new java.util.ArrayList<>();
-            Torneo torneos=consulta.getTorneo(aux);
+           // Torneo torneos=consulta.getTorneos(aux);
             depor= consulta.getDeporte();
            /* deporte=(List<Deporte>) consulta.getDeporte(aux);
             /* TODO output your page here. You may use following sample code. */
@@ -73,10 +73,10 @@ public class CrearTorneo extends HttpServlet {
 "  </div>\n" +
 "</nav>\n" +
 "      <div class=\"container\">\n" +
-"                   <form action=\"actTorneo\" method=\"post\">\n" +
+"                   <form action=\"actTorn\" method=\"post\">\n" +
 "          <div class=\"form-group\">\n" +
-"            <label for=\"Nombre\">Nombre Del Deporte</label>\n" +
-"            <input type=\"text\" class=\"form-control\" id=\"Nombre\" name=\"correo\" placeholder=\"nombre completo\">\n" +
+"            <label for=\"Nombre\">Nombre Del Torneo</label>\n" +
+"            <input type=\"text\" class=\"form-control\" id=\"Nombre\" name=\"nombre\" placeholder=\"nombre completo\">\n" +
 "          </div>\n" +
 "          <div class=\"form-group\">\n" +
 "            <label for=\"date\">Fecha de Inicio</label>\n" +
@@ -88,7 +88,7 @@ public class CrearTorneo extends HttpServlet {
 "          </div>\n" +
 "          <div class=\"form-group\">\n" +
 "                <label for=\"select\">Deporte</label>\n" +
-"              <select id=\"select\">\n" );
+"              <select name=\"select\">\n" );
            for(Deporte p:depor){
                      out.println("<option value=\""+p.getIdDeporte()+"\">"+p.getNombreDeporte()+"</option>\n");
             }

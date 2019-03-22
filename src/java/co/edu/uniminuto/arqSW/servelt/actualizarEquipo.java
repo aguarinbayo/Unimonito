@@ -7,26 +7,24 @@ package co.edu.uniminuto.arqSW.servelt;
 
 import co.edu.uniminuto.arqSW.DAO.DAO;
 import co.edu.uniminuto.arqSW.hibernate.Deporte;
+import co.edu.uniminuto.arqSW.hibernate.Equipo;
 import co.edu.uniminuto.arqSW.hibernate.Torneo;
-import co.edu.uniminuto.arqSW.hibernate.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.sql.Array;
 import java.util.List;
-import static javassist.CtMethod.ConstParameter.string;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Onescreen
  */
-@WebServlet(name = "torneo", urlPatterns = {"/torneo"})
-public class torneo extends HttpServlet {
+@WebServlet(name = "actualizarEquipo", urlPatterns = {"/actualizarEquipo"})
+public class actualizarEquipo extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,22 +39,21 @@ public class torneo extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            DAO consulta = new DAO();
-            List<Torneo> torneo = new ArrayList<>();
-            Deporte depor;
-            torneo=consulta.getTorn();
-            
-            HttpSession session = request.getSession();
-           if(session.getAttribute("usr")==null){
-           response.sendRedirect("http://localhost:8084/unimonito/login.html");
-           }
-            
-
+                    String dato=request.getParameter("dato");
+        /*String tipo=request.getParameter("tipo");*/
+        int aux = (Integer.parseInt(dato));
+    
+          DAO consulta = new DAO();
+            List<Torneo> torneo = new java.util.ArrayList<>();
+            Equipo equipo=consulta.getEquipos(aux);
+            torneo= consulta.getTorn();
+           /* deporte=(List<Deporte>) consulta.getDeporte(aux);
+            /* TODO output your page here. You may use following sample code. */
+           
             out.println("<!DOCTYPE html>\n" +
 "<html>\n" +
 "    <head>\n" +
-"        <title>PANEL</title>\n" +
+"        <title>actaulizar</title>\n" +
 "        <meta charset=\"UTF-8\">\n" +
 "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
 "      <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css\">\n" +
@@ -64,52 +61,43 @@ public class torneo extends HttpServlet {
 "        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
 "        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js\"></script>\n" +
 "    </head>\n" +
-"    \n" +
+"    <body>\n" +
 "        <nav class=\"navbar navbar-default\">\n" +
 "  <div class=\"container-fluid\">\n" +
 "    <div class=\"navbar-header\">\n" +
-"      <a class=\"navbar-brand\" href=\"http://localhost:8084/unimonito/panel/panel.jsp\">Unimonito</a>\n" +
+"      <a class=\"navbar-brand\" href=\"#\">Unimonito</a>\n" +
 "    </div>\n" +
 "  <ul class=\"nav navbar-nav navbar-right\">\n" +
-        "      <li><a href=\"http://localhost:8084/unimonito/panel/cerrar.jsp\"><span class=\"glyphicon glyphicon-log-in\"></span> cerrar sesion</a></li>\n" +
+
+"      <li><a href=\"cerrar.jsp\"><span class=\"glyphicon glyphicon-log-in\"></span> cerrar sesion</a></li>\n" +
 "    </ul>\n" +
 "  </div>\n" +
 "</nav>\n" +
-"      \n" +
 "      <div class=\"container\">\n" +
-"          <div class=\"row\">\n" +
-"              <table>\n" +
-"                  <tr>\n" +
-"                      <td>ID</td>\n" +
-"                      <td>Nombre Deporte</td>\n" +
-"                      <td>Fecha Inicio</td>\n" +
-"                      <td>Fecha Cierre</td>\n" +
-"                      <td>Torneo</td>\n" +                    
-"                    <td></td>\n" +
-"                  </tr>");
-            for(Torneo p:torneo){
-                    
-                    depor= p.getDeporte();
-               
-                
-            out.println("<tr><td>\n"+
-                    p.getIdTorneo()
-                    +"</td><td>\n"+
-                    p.getNombreTorneo()+
-                    "</td><td>\n"+
-                     p.getFechaTorneoIn()+       
-                    "</td><td>\n"+
-                    p.getFechaTorneoOu()+
-                    "</td><td>\n"+
-                   depor.getNombreDeporte()+
-                    "</td><td>\n"+
-                    "</td><td><a href=\"http://localhost:8084/unimonito/actualizarTorneo"
-                            + ""
-                            + "?dato="+p.getIdTorneo()+"&tipo=Torneo \">Actualizar</a></td></tr>");
+"                   <form action=\"actTorneo\" method=\"post\">\n" +
+"          <div class=\"form-group\">\n" +
+"            <input type=\"hidden\" class=\"form-control\" id=\"h\" name=\"id\" value=\""+equipo.getIdEquipo()+"\">\n" +
+"            <label for=\"Nombre\">Nombre Del Deporte</label>\n" +
+"            <input type=\"text\" class=\"form-control\" id=\"Nombre\" name=\"nombre\" value=\""+equipo.getNombreEquipo()+"\">\n" +
+"          </div>\n" +
+
+"          <div class=\"form-group\">\n" +
+"                <label for=\"select\">Deporte</label>\n" +
+"              <select name=\"select\">\n" );
+           for(Torneo p:torneo){
+                     out.println("<option value=\""+p.getIdTorneo()+"\">"+p.getNombreTorneo()+"</option>\n");
             }
+            
+            out.println("    </body>\n" +
+                    "  </select>\n" +
+                    "          </div>             \n" +
+                    "          <button type=\"submit\" class=\"btn btn-primary\">Submit</button>\n" +
+                    "        </form>\n" +
+                    "      \n" +
+"</html>");
         }
     }
-//<a href=\"http://localhost:8084/unimonito/eliminar?dato="+p.getIdDeporte()+"&tipo=Deporte \">Eliminar</a>
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
